@@ -1,6 +1,8 @@
 # mimicOS
+mimicOS is a simulated file system written in x86 Assembly, designed to handle file operations on both linear and bidimensional memory layouts.
+
 ## What is this about?
-This project actually is a file system( encoded) that uses 4 opperations: ADD, GET, DELETE and DEFRAGMENTATION; on two cases, on a linear memory of maximum 4 GB and a bidimentional memory 4x4 GB. 
+This project is a file system( encoded) that uses 4 opperations: ADD, GET, DELETE and DEFRAGMENTATION; on two cases, on a linear memory of maximum 4 GB and a bidimentional memory 4x4 GB. 
 
 The rules are the following:
 1. Each file will be represented by an unique id (it was guaranteed that the ids will be unique in the test cases) and the memory that will be used in storing the file in kB (for a better understanding, a block of memory will take 8 kB).
