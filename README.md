@@ -5,18 +5,21 @@ mimicOS is a simulated file system written in x86 Assembly, designed to handle f
 This project is a file system( encoded) that uses 4 operations: ADD, GET, DELETE and DEFRAGMENTATION; on two cases, on a linear memory of maximum 4 GB and a bidimensional memory 4x4 GB. 
 
 ### The rules are the following:
-1. Each file will be represented by an unique id (it was guaranteed that the ids will be unique in the test cases) and the memory that will be used in storing the file in kB (for a better understanding, a block of memory will take 8 kB).
+1. Each file will be represented by a unique id (it was guaranteed that the ids will be unique in the test cases) and the memory that will be used in storing the file in kB (for a better understanding, a block of memory will take 8 kB).
 2. For the ADD operation ( encoded: 1) you need to create a file. The purpose is to add files in such a manner that the memory will be used at maximum ( e.g. if after a deletion there will be enough space to add a new file, you need to take that into consideration). Attention for the bidimensional case: a file needs to be saved in memory on a single line! ( e.g. if you are on the last 2 available blocks of memory on the nth line and the file is larger that 16 kB, you need to save the fyle in the n+1 line of the memory. NO SLICING!)
 3. For the GET operation ( encoded: 2), the user needs to write the id of the file that they are searching for and in the terminal it will be shown the file( in the format id: (starting_block_of_memory, ending_block_of_memory)) or nothing if the file is not found.
 4. For the DELETE operation ( encoded: 3), the user writes the id of the file that they want to be gone and the file system will erase that file from the memory, without modifying anything except that specific file, then will display the rest of the files that remain using the same format as for the GET operation.
-5. DEFRAGMENTATION ( encoded: 4) is the operation that makes sure no more "spaces" in memory are left behind. For the linear case it is simple, you need to shift left all the blocks that are used, but for the bidimentional case it is tricky because you need to make sure that you don't slice accidently a file in the memory.
+5. DEFRAGMENTATION ( encoded: 4) is the operation that makes sure no more "spaces" in memory are left behind. For the linear case it is simple, you need to shift left all the blocks that are used, but for the bidimentional case it is tricky because you need to make sure that you don't slice accidentaly a file in the memory.
 
 ### Demo input and output
 1 101 24   ; ADD file with ID 101 and size 24 kB 
 
 2 101      ; GET file with ID 101
 
-101:( 0, 2)  ; OUTPUT after GET-> because we have 24 kB for the file and a block is 8 kB, then we need to save in memory the file using 3 blocks, being the first file, the place is between the block indexed with 0 and the one indexed with 2
+101:( 0, 2)  ; OUTPUT after GET-> because we have 24 kB for the file and a block is 8 kB, then we need to save in memory
+
+             ; the file using 3 blocks, being the first file, the place is between the block indexed with 0 and the one               
+             ; indexed with 2
 
 2 7        ; we want to GET the file with the ID 7 => no output, the file is not saved in the memory
 
@@ -60,7 +63,7 @@ This project is a file system( encoded) that uses 4 operations: ADD, GET, DELETE
 ## How to use it
 Personally, I used WSL becuse I am more confortable with the Linux terminal commands, so I suggest working on a Linux distribution/ Virtual Machine or WSL.
 
-Before, make sure that you have intslled the multilib to unlock the gcc command.
+Before, make sure that you have intalled the multilib to unlock the gcc command.
 
 - Step 1: download the code from the repo or clone it
 - Step 2: be sure that the program compiles without errors/ create the executable. I used the following command: 
@@ -74,6 +77,6 @@ Before, make sure that you have intslled the multilib to unlock the gcc command.
 
 ## Challenges
 - At first, getting used to the low-level language. Without loop and conditions in other languages, here, I needed to use tags and jump commands to get the desired operations.
-- After I got a sense of how things work and my mind started to shift in that direction, the code was easier to write, but a headache to debug, expecialy on the bidimensional case at defragmentation. I used pwndbg to see the registers with ease, but the logic behind the first draft was bugged and I needed to see where the logic from the paper went wrong in the functional code from vs code.
+- After I got a sense of how things work and my mind started to shift in that direction, the code was easier to write, but a headache to debug, expecially on the bidimensional case at defragmentation. I used pwndbg to see the registers with ease, but the logic behind the first draft was bugged and I needed to see where the logic from the paper went wrong in the functional code from vs code.
 - Shifting the registers on the stack was like the ace in my hand, making things easier when I wanted to call a variable
-- The variables were my saviours when I needed to empty some registers to reuse them in other parts of the code without losing essential data.
+- The variables were my saviors when I needed to empty some registers to reuse them in other parts of the code without losing essential data.
