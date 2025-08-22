@@ -16,10 +16,12 @@ This project is a file system( encoded) that uses 4 operations: ADD, GET, DELETE
 
 2 101      ; GET file with ID 101
 
-101:( 0, 2)  ; OUTPUT after GET-> because we have 24 kB for the file and a block is 8 kB, then we need to save in memory
-
-             ; the file using 3 blocks, being the first file, the place is between the block indexed with 0 and the one               
-             ; indexed with 2
+101:( 0, 2)  
+; OUTPUT after GET-> because we have 24 kB for the file and a block is 8 kB, then we need to save in memory
+             
+; the file using 3 blocks, being the first file, the place is between the block indexed with 0 and the one  
+    
+; indexed with 2
 
 2 7        ; we want to GET the file with the ID 7 => no output, the file is not saved in the memory
 
